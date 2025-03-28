@@ -35,10 +35,7 @@ jobs:
           name: Debug Test Results Directory
           command: ls -R core/build/test-results/ || echo "No test results found."
       - store_test_results:
-          path: core/build/test-results/testUnitTest  # Sesuaikan dengan hasil find
-      - run:
-          name: List All Test Classes
-          command: ./gradlew :core:test --dry-run
+          path: core/build/test-results  # Menyimpan semua hasil test
       - store_artifacts:
           path: app/build/outputs/apk/
           destination: apk-artifacts
