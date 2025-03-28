@@ -26,10 +26,13 @@ jobs:
           path: app/build/reports
           destination: reports
       - run:
-          name: Run Unit Tests with XML Output
-          command: ./gradlew testDebugUnitTest --info --stacktrace --no-daemon
+          name: Run Core Unit Tests
+          command: ./gradlew :core:test --info --stacktrace --no-daemon
       - store_test_results:
-          path: app/build/test-results/testDebugUnitTest
+          path: core/build/test-results/test
+      - run:
+          name: Debug Test Results
+          command: ls -R core/build/test-results/ || echo "No test results found."
       - store_artifacts:
           path: app/build/outputs/apk/
           destination: apk-artifacts
