@@ -28,11 +28,17 @@ jobs:
       - run:
           name: Run Core Unit Tests
           command: ./gradlew :core:test --info --stacktrace --no-daemon
-      - store_test_results:
-          path: core/build/test-results/test
       - run:
-          name: Debug Test Results
+          name: Find Test Results Directory
+          command: find . -type d -name "test-results"
+      - run:
+          name: Debug Test Results Directory
           command: ls -R core/build/test-results/ || echo "No test results found."
+      - store_test_results:
+          path: core/build/test-results/testUnitTest  # Sesuaikan dengan hasil find
+      - run:
+          name: List All Test Classes
+          command: ./gradlew :core:test --dry-run
       - store_artifacts:
           path: app/build/outputs/apk/
           destination: apk-artifacts
