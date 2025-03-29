@@ -1,21 +1,18 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# Menjaga semua class dalam package data
+-keep class com.example.dicodingevents.core.data.** { *; }
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# Menjaga semua class dalam package domain
+-keep class com.example.dicodingevents.core.domain.** { *; }
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# Menjaga semua class dalam package UI (adapter, viewmodel, dll.)
+-keep class com.example.dicodingevents.core.ui.** { *; }
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# Menjaga semua class dalam package dependency injection (DI)
+-keep class com.example.dicodingevents.core.di.** { *; }
+
+# Menjaga semua class dalam package dependency injection (DI)
+-keep class com.example.dicodingevents.core.utils.** { *; }
+
+# Menjaga semua interface repository dan use case
+-keep class com.example.dicodingevents.core.domain.repository.** { *; }
+-keep class com.example.dicodingevents.core.domain.usecase.** { *; }
